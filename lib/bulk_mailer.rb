@@ -1,4 +1,4 @@
-require "bulk_mailer/version"
+require 'bulk_mailer/version'
 require 'attribute_accessors'
 
 module BulkMailer
@@ -20,6 +20,6 @@ module BulkMailer
   mattr_reader :aws
   @@aws = {
     encoding: 'UTF-8',
-    batch_size: 1000,
+    batch_size: 1000
   }
 end
