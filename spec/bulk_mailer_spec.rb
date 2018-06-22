@@ -1,9 +1,9 @@
 RSpec.describe BulkMailer do
-  it "has a version number" do
-    expect(BulkMailer::VERSION).not_to be nil
-  end
-
-  it "does something useful" do
-    expect(false).to eq(true)
+  describe '.setup' do
+    it 'yields self' do
+      BulkMailer.setup do |config|
+        expect(config).to eq BulkMailer
+      end
+    end
   end
 end
