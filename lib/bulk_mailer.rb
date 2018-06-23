@@ -1,5 +1,12 @@
 require 'bulk_mailer/version'
+
+require 'bulk_mailer/errors/not_allowed_in_production'
+
+require 'bulk_mailer/mail'
 require 'attribute_accessors'
+
+require 'securerandom'
+require 'launchy'
 
 module BulkMailer
   def self.setup
