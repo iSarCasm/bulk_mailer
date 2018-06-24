@@ -4,6 +4,7 @@ require 'bulk_mailer/errors/not_allowed_in_production'
 
 require 'bulk_mailer/mail'
 require 'bulk_mailer/mail_message'
+require 'bulk_mailer/mail_batch_message'
 
 require 'attribute_accessors'
 require 'securerandom'
