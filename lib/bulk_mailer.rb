@@ -12,7 +12,7 @@ require 'bulk_mailer/mail'
 require 'bulk_mailer/mail_message'
 require 'bulk_mailer/mail_batch_message'
 
-require 'bulk_mailer/aws_client'
+require 'bulk_mailer/aws/aws_client'
 
 module BulkMailer
   def self.setup
