@@ -14,6 +14,11 @@ require 'bulk_mailer/mail_batch_message'
 
 require 'bulk_mailer/aws/aws_client'
 
+require 'bulk_mailer/mailgun/mailgun_client'
+require 'bulk_mailer/mailgun/aws_template_to_mailgun_template'
+require 'bulk_mailer/mailgun/errors/nil_mailgun_api_key'
+require 'bulk_mailer/mailgun/errors/nil_mailgun_domain'
+
 module BulkMailer
   def self.setup
     yield self
