@@ -24,6 +24,8 @@ Gem::Specification.new do |spec|
   spec.require_paths = ["lib"]
 
   spec.add_dependency 'launchy'
+  spec.add_dependency 'aws-sdk', '~> 3'
+  spec.add_dependency 'mailgun-ruby', '~> 1.1.8'
   spec.add_development_dependency "bundler", "~> 1.16"
   spec.add_development_dependency "rake", "~> 10.0"
   spec.add_development_dependency "rspec", "~> 3.0"
@@ -31,4 +33,6 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'rubocop'
   spec.add_development_dependency 'guard-rubocop'
   spec.add_development_dependency 'factory_bot'
+  spec.add_development_dependency 'webmock'
+  spec.add_development_dependency 'faker'
 end
