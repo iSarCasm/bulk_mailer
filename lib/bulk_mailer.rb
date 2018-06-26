@@ -11,6 +11,8 @@ require 'bulk_mailer/errors/not_allowed_in_production'
 require 'bulk_mailer/mail'
 require 'bulk_mailer/mail_message'
 require 'bulk_mailer/mail_batch_message'
+require 'bulk_mailer/batch_messages_builder'
+require 'bulk_mailer/delivery'
 
 require 'bulk_mailer/aws/aws_client'
 
