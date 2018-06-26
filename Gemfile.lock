@@ -2,7 +2,7 @@ PATH
   remote: .
   specs:
     bulk_mailer (0.1.0)
-      activesupport (~> 5.2.0)
+      activesupport (~> 5)
       aws-sdk (~> 3)
       launchy
       mailgun-ruby (~> 1.1.8)
