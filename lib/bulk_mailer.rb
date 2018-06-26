@@ -1,6 +1,6 @@
 require 'bulk_mailer/version'
 
-require 'attribute_accessors'
+require 'active_support'
 require 'securerandom'
 require 'launchy'
 require 'aws-sdk'
@@ -27,17 +27,17 @@ module BulkMailer
   end
 
   # Default emails 'from' source
-  mattr_reader :default_source
+  mattr_accessor :default_source
   @@default_source = 'Example <example@example.com>'
 
   # Default Mailgun config
-  mattr_reader :mailgun
+  mattr_accessor :mailgun
   @@mailgun = {
     batch_size: 1000
   }
 
   # Default AWS SES config
-  mattr_reader :aws
+  mattr_accessor :aws
   @@aws = {
     encoding: 'UTF-8',
     aws_region: 'eu-west-1',
