@@ -3,6 +3,8 @@ require 'bulk_mailer'
 require 'factory_bot'
 require 'webmock/rspec'
 require 'faker'
+require 'simplecov'
+SimpleCov.start
 
 WebMock.disable_net_connect!(allow_localhost: true)
 

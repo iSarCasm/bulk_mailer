@@ -35,4 +35,5 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'factory_bot'
   spec.add_development_dependency 'webmock'
   spec.add_development_dependency 'faker'
+  spec.add_development_dependency 'simplecov'
 end
