@@ -1,4 +1,6 @@
 module BulkMailer
-  class NilMailgunApiKey < RuntimeError
+  module Mailgun
+    class NilMailgunApiKey < RuntimeError
+    end
   end
 end

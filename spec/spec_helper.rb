@@ -3,6 +3,7 @@ require 'bulk_mailer'
 require 'factory_bot'
 require 'webmock/rspec'
 require 'faker'
+require 'pry'
 require 'simplecov'
 SimpleCov.start
 

@@ -31,8 +31,8 @@ module BulkMailer
         api.new(config)
       else
         case api.to_sym
-        when :mailgun then MailgunClient.new(config)
-        when :aws     then AwsClient.new(config)
+        when :mailgun then Mailgun::Client.new(config)
+        when :aws     then AWS::Client.new(config)
         else raise ArgumentError, 'invalid client'
         end
       end

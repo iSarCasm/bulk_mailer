@@ -1,39 +1,39 @@
-RSpec.describe BulkMailer::AwsClient do
+RSpec.describe BulkMailer::AWS::Client do
   describe '.new' do
     context 'given config' do
       let(:config) { { aws_region: 'eu-west-2', encoding: 'encoding', batch_size: 4 } }
 
       it 'merges aws region' do
-        client = BulkMailer::AwsClient.new(config)
+        client = BulkMailer::AWS::Client.new(config)
         expect(client.aws_region).to eq 'eu-west-2'
       end
 
       it 'merges encoding' do
-        client = BulkMailer::AwsClient.new(config)
+        client = BulkMailer::AWS::Client.new(config)
         expect(client.encoding).to eq 'encoding'
       end
 
       it 'merges batch size' do
-        client = BulkMailer::AwsClient.new(config)
+        client = BulkMailer::AWS::Client.new(config)
         expect(client.batch_size).to eq 4
       end
     end
 
     context 'no config' do
       before do
-        allow(BulkMailer).to receive(:aws).and_return({
+        allow(BulkMailer).to receive(:aws).and_return(
           aws_region: 'eu-west-1',
           encoding: 'default encoding'
-        })
+        )
       end
 
       it 'uses default aws region' do
-        client = BulkMailer::AwsClient.new
+        client = BulkMailer::AWS::Client.new
         expect(client.aws_region).to eq 'eu-west-1'
       end
 
       it 'uses default encoding' do
-        client = BulkMailer::AwsClient.new
+        client = BulkMailer::AWS::Client.new
         expect(client.encoding).to eq 'default encoding'
       end
     end
@@ -45,7 +45,7 @@ RSpec.describe BulkMailer::AwsClient do
         to_return(status: 200, body: "", headers: {})
     end
 
-    let(:client) { BulkMailer::AwsClient.new }
+    let(:client) { BulkMailer::AWS::Client.new }
     let(:recipients) do
       [
         double(:user_recipient, email: Faker::Internet.email),

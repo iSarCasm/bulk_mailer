@@ -1,4 +1,4 @@
-RSpec.describe BulkMailer::MailgunClient do
+RSpec.describe BulkMailer::Mailgun::Client do
   before do
     config = BulkMailer.mailgun
     allow(BulkMailer).to receive(:mailgun)
@@ -7,20 +7,20 @@ RSpec.describe BulkMailer::MailgunClient do
 
   describe '.new' do
     context 'given config' do
-      let(:config) { {api_key: 'api key', domain: 'domain', batch_size: 10} }
+      let(:config) { { api_key: 'api key', domain: 'domain', batch_size: 10 } }
 
       it 'merges api key' do
         expect(Mailgun::Client).to receive(:new).with('api key')
-        client = BulkMailer::MailgunClient.new(config)
+        client = BulkMailer::Mailgun::Client.new(config)
       end
 
       it 'merges domain' do
-        client = BulkMailer::MailgunClient.new(config)
+        client = BulkMailer::Mailgun::Client.new(config)
         expect(client.domain).to eq 'domain'
       end
 
       it 'merges batch size' do
-        client = BulkMailer::MailgunClient.new(config)
+        client = BulkMailer::Mailgun::Client.new(config)
         expect(client.batch_size).to eq 10
       end
     end
@@ -36,16 +36,16 @@ RSpec.describe BulkMailer::MailgunClient do
 
       it 'uses default api key' do
         expect(Mailgun::Client).to receive(:new).with('default api key')
-        client = BulkMailer::MailgunClient.new
+        client = BulkMailer::Mailgun::Client.new
       end
 
       it 'uses default domain' do
-        client = BulkMailer::MailgunClient.new
+        client = BulkMailer::Mailgun::Client.new
         expect(client.domain).to eq 'default domain'
       end
 
       it 'uses default batch size' do
-        client = BulkMailer::MailgunClient.new
+        client = BulkMailer::Mailgun::Client.new
         expect(client.batch_size).to eq 20
       end
     end
@@ -58,7 +58,7 @@ RSpec.describe BulkMailer::MailgunClient do
     end
 
     context 'batch size is 2' do
-      let(:client) { BulkMailer::MailgunClient.new batch_size: 2 }
+      let(:client) { BulkMailer::Mailgun::Client.new batch_size: 2 }
 
       context 'given 2 batch mails 3 recipients each' do
         it 'makes 4 requests to mailgun and changes mail text format' do
@@ -110,7 +110,7 @@ RSpec.describe BulkMailer::MailgunClient do
     end
 
     it 'yields a block on each batch mail' do
-      client = BulkMailer::MailgunClient.new
+      client = BulkMailer::Mailgun::Client.new
       batch = BulkMailer::MailBatchMessage.new(
         mail: BulkMailer::Mail.new(unique_id: '1', subject: '1', text: 'text'),
         recipients: [double(:user_recipient, email: Faker::Internet.email)] * 3

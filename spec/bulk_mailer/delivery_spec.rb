@@ -61,12 +61,12 @@ RSpec.describe BulkMailer::Delivery do
         end
 
         it 'mailgun' do
-          expect_any_instance_of(BulkMailer::MailgunClient).to receive(:deliver_batches)
+          expect_any_instance_of(BulkMailer::Mailgun::Client).to receive(:deliver_batches)
           BulkMailer::Delivery.new(recipients: recipients) {}.deliver_with(:mailgun)
         end
 
         it 'aws' do
-          expect_any_instance_of(BulkMailer::AwsClient).to receive(:deliver_batches)
+          expect_any_instance_of(BulkMailer::AWS::Client).to receive(:deliver_batches)
           BulkMailer::Delivery.new(recipients: recipients) {}.deliver_with(:aws)
         end
 

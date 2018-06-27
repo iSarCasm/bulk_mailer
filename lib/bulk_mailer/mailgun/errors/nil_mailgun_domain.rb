@@ -1,4 +1,6 @@
 module BulkMailer
-  class NilMailgunDomain < RuntimeError
+  module Mailgun
+    class NilMailgunDomain < RuntimeError
+    end
   end
 end

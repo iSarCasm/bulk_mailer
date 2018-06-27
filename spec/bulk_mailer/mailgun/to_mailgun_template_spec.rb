@@ -1,4 +1,4 @@
-RSpec.describe BulkMailer::AwsTemplateToMailgunTemplate do
+RSpec.describe BulkMailer::Mailgun::ToMailgunTemplate do
   describe '.call' do
     it 'changes bulk variable style from {} to %recipient.%' do
       aws = <<~AWS
@@ -10,7 +10,7 @@ RSpec.describe BulkMailer::AwsTemplateToMailgunTemplate do
         We are glad that you bought %recipient.product%. Maybe, you will also be interested in https:\\website.com\%recipient.relevant_link%
       MAILGUN
 
-      expect(BulkMailer::AwsTemplateToMailgunTemplate.call(aws)).to eq mailgun
+      expect(BulkMailer::Mailgun::ToMailgunTemplate.call(aws)).to eq mailgun
     end
   end
 end
