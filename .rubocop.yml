@@ -12,6 +12,7 @@ Style/FrozenStringLiteralComment:
 
 Metrics/LineLength:
   Max: 99
+  IgnoredPatterns: ['(\A|\s)#']
 
 Layout/TrailingBlankLines:
   Enabled: false
